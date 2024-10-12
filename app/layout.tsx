@@ -28,7 +28,20 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                {children}
+                <main className="mx-auto max-w-[1960px] p-4">{children}</main>
+
+                <footer className="p-6 text-center sm:p-12">
+                    Built by{" "}
+                    <a
+                        href="https://github.com/pdqdat"
+                        target="_blank"
+                        className="font-semibold text-indigo-500 duration-300 ease-in-out hover:text-indigo-600"
+                        rel="noreferrer"
+                    >
+                        Dat Phan
+                    </a>{" "}
+                    with Next.js, deployed on Vercel.
+                </footer>
             </body>
         </html>
     );
