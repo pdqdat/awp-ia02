@@ -24,22 +24,28 @@ interface Photo {
 }
 
 const Home = async () => {
-    // Fetch photos from Unsplash API
-    const res = await axios.get(`${API_URL}/photos`, {
-        params: {
-            client_id: process.env.UNSPLASH_ACCESS_KEY,
-            per_page: 20,
-        },
-    });
+    let photos: { id: string; url: string; title: string; author: string }[] =
+        [];
 
-    // Map the response data to a more readable format
-    const photos: { id: string; url: string; title: string; author: string }[] =
-        res.data.map((photo: Photo) => ({
+    try {
+        // Fetch photos from Unsplash API
+        const res = await axios.get(`${API_URL}/photos`, {
+            params: {
+                client_id: process.env.UNSPLASH_ACCESS_KEY,
+                per_page: 20,
+            },
+        });
+
+        // Map the response data to a more readable format
+        photos = res.data.map((photo: Photo) => ({
             id: photo.id,
             url: photo.urls.regular,
             title: photo.alt_description,
             author: photo.user.name,
         }));
+    } catch (error) {
+        console.error("Error fetching photos:", error);
+    }
 
     return (
         <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
