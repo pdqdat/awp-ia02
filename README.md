@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HCMUS Advanced Web App Programming
 
-## Getting Started
+## IA02 - Unsplash photo gallery
 
-First, run the development server:
+20120268 - Phan Duong Quoc Dat
+
+## How to run the project
+
+Clone the repository and run the following commands:
 
 ```bash
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Or vist the deployed version at [https://ia2photogallery.vercel.app](https://ia2photogallery.vercel.app)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Self evaluation
 
-## Learn More
+<table>
+    <thead>
+        <tr>
+            <th colspan=2>Feature</th>
+            <th>Pt.</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr>
+            <td>Successfully fetches data from the Unsplash API, handles loading and error states well</td>
+            <td>&cross;</td>
+            <td align=center>1</td>
+        </tr>
+        <tr>
+            <td>Displays photos in a responsive, well-styled grid/list with author info</td>
+            <td>&cross;</td>
+            <td align=center>2</td>
+        </tr>
+        <tr>
+            <td>Infinite scroll works smoothly, with seamless loading of new photos and clear loading indicators</td>
+            <td>&cross;</td>
+            <td align=center>1</td>
+        </tr>
+        <tr>
+            <td>Displays full photo, title, author, and description. Provides a good user experience</td>
+            <td>&cross;</td>
+            <td align=center>2</td>
+        </tr>
+        <tr>
+            <td>URLs are intuitive and functional</td>
+            <td>&cross;</td>
+            <td align=center>1</td>
+        </tr>
+        <tr>
+            <td>App is well-designed, fully responsive across devices, with additional style considerations</td>
+            <td>&cross;</td>
+            <td align=center>1</td>
+        </tr>
+        <tr>
+            <td>Code is well-organized, with comments, reusable components, and follows React best practices</td>
+            <td>&cross;</td>
+            <td align=center>1</td>
+        </tr>
+        <tr>
+            <td>Upload to a public host</td>
+            <td>&check;</td>
+            <td align=center>1</td>
+        </tr>
+        <tr>
+            <td colspan=2 align=center><strong>Total</strong></td>
+            <td><strong>1</strong></td>
+        </tr>
+    </tbody>
+</table>
 
-To learn more about Next.js, take a look at the following resources:
+Detailed version of the self evaluation can be found [here](https://docs.google.com/document/d/1jxr3Eg1oELl_M7IfWUfXFyGBTM1gkZlIQEY4z2IhOjA/edit).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## References
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-   [Next.js Documentation](https://nextjs.org/docs)
+-   [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+-   [Unsplash API Documentation](https://unsplash.com/documentation)
