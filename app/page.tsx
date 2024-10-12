@@ -27,7 +27,7 @@ const Home = async () => {
     // Fetch photos from Unsplash API
     const res = await axios.get(`${API_URL}/photos`, {
         params: {
-            client_id: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
+            client_id: process.env.UNSPLASH_ACCESS_KEY,
             per_page: 20,
         },
     });
