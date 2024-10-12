@@ -6,13 +6,27 @@
 
 ## How to run the project
 
-Clone the repository and run the following commands:
+Clone the repository:
 
 ```bash
-# Install dependencies
-npm install
+git clone https://github.com/pdqdat/awp-ia02.git
+```
 
-# Run the development server
+Create a `.env.development.local` file in the root directory and add the following line:
+
+```env
+UNSPLASH_ACCESS_KEY="Your Unsplash Access Key"
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
 npm run dev
 # or
 yarn dev
@@ -20,14 +34,14 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Or vist the deployed version at [https://ia2photogallery.vercel.app](https://ia2photogallery.vercel.app)
+Or vist the deployed version at [https://ia2photogallery.vercel.app](https://ia2photogallery.vercel.app).
 
 ## Self evaluation
 
 <table>
     <thead>
         <tr>
-            <th colspan=2>Feature</th>
+            <th colspan=2>Requirements</th>
             <th>Pt.</th>
         </tr>
     </thead>
@@ -54,7 +68,7 @@ Or vist the deployed version at [https://ia2photogallery.vercel.app](https://ia2
         </tr>
         <tr>
             <td>URLs are intuitive and functional</td>
-            <td>&cross;</td>
+            <td>&check;</td>
             <td align=center>1</td>
         </tr>
         <tr>
@@ -64,7 +78,7 @@ Or vist the deployed version at [https://ia2photogallery.vercel.app](https://ia2
         </tr>
         <tr>
             <td>Code is well-organized, with comments, reusable components, and follows React best practices</td>
-            <td>&cross;</td>
+            <td>&check;</td>
             <td align=center>1</td>
         </tr>
         <tr>
@@ -74,7 +88,7 @@ Or vist the deployed version at [https://ia2photogallery.vercel.app](https://ia2
         </tr>
         <tr>
             <td colspan=2 align=center><strong>Total</strong></td>
-            <td><strong>1</strong></td>
+            <td align=center><strong>3</strong></td>
         </tr>
     </tbody>
 </table>
