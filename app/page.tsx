@@ -5,34 +5,27 @@ import axios from "axios";
 
 // Components
 import Button from "@comp/button";
+import InfiniteScrollPhotos from "@comp/infinite-scroll-photos";
 
 import { ArrowUpRight } from "lucide-react";
 
+import { Photo } from "@/types";
+
 import { API_URL } from "@lib/constants";
 
-interface Photo {
-    id: string;
-    urls: {
-        regular: string;
-        thumb: string;
-        small: string;
-    };
-    alt_description: string;
-    user: {
-        name: string;
-    };
-}
-
 const Home = async () => {
-    let photos: { id: string; url: string; title: string; author: string }[] =
-        [];
+    let photos: {
+        id: string;
+        url: string;
+        title: string;
+        author: string;
+    }[] = [];
 
     try {
         // Fetch photos from Unsplash API
         const res = await axios.get(`${API_URL}/photos`, {
             params: {
-                client_id: process.env.UNSPLASH_ACCESS_KEY,
-                per_page: 20,
+                client_id: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
             },
         });
 
@@ -80,37 +73,8 @@ const Home = async () => {
                 </h3>
             </div>
 
-            {/* Image mapping area */}
-            {photos.map(
-                ({
-                    id,
-                    url,
-                    title,
-                }: {
-                    id: string;
-                    url: string;
-                    title: string;
-                }) => {
-                    return (
-                        <Link
-                            key={id}
-                            href={`/photo/${id}`}
-                            shallow
-                            className="after:content after:shadow-highlight group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
-                        >
-                            <Image
-                                alt={title}
-                                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                                src={url}
-                                loading="lazy"
-                                width={720}
-                                height={480}
-                                sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
-                            />
-                        </Link>
-                    );
-                },
-            )}
+            {/* Image mapping */}
+            <InfiniteScrollPhotos initialPhotos={photos} />
         </div>
     );
 };

@@ -16,3 +16,9 @@ export const images = Array.from({ length: 15 }, (_, index) => ({
  * The base URL for the Unsplash API.
  */
 export const API_URL = "https://api.unsplash.com";
+
+/**
+ * The number of posts to display per page.
+ * This constant is used to paginate the posts in the application.
+ */
+export const POSTS_PER_PAGE = 10;
