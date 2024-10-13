@@ -6,6 +6,8 @@
 
 ## How to run the project
 
+Make sure you have [Node.js](https://nodejs.org/en/download/) installed on your machine.
+
 Clone the repository:
 
 ```bash
@@ -15,7 +17,7 @@ git clone https://github.com/pdqdat/awp-ia02.git
 Create a `.env.development.local` file in the root directory and add the following line:
 
 ```env
-UNSPLASH_ACCESS_KEY="Your Unsplash Access Key"
+NEXT_PUBLIC_UNSPLASH_ACCESS_KEY="Your Unsplash Access Key"
 ```
 
 Install dependencies:
@@ -28,15 +30,15 @@ Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Or vist the deployed version at [https://ia2photogallery.vercel.app](https://ia2photogallery.vercel.app).
+Or vist the deployed version at [https://ia2photogallery.vercel.app](https://ia2photogallery.vercel.app)
 
 ## Self evaluation
+
+Detailed version of the requirements can be found [here](https://docs.google.com/document/d/1jxr3Eg1oELl_M7IfWUfXFyGBTM1gkZlIQEY4z2IhOjA/edit).
 
 <table>
     <thead>
@@ -92,8 +94,6 @@ Or vist the deployed version at [https://ia2photogallery.vercel.app](https://ia2
         </tr>
     </tbody>
 </table>
-
-Detailed version of the self evaluation can be found [here](https://docs.google.com/document/d/1jxr3Eg1oELl_M7IfWUfXFyGBTM1gkZlIQEY4z2IhOjA/edit).
 
 ## References
 

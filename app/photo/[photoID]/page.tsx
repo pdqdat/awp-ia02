@@ -45,7 +45,7 @@ const PhotoDetailPage: React.FC<PhotoDetailPageProps> = async ({ params }) => {
     try {
         const res = await axios.get(`${API_URL}/photos/${photoID}`, {
             params: {
-                client_id: process.env.UNSPLASH_ACCESS_KEY,
+                client_id: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
             },
         });
 
