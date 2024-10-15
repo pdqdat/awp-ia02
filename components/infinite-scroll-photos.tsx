@@ -38,6 +38,7 @@ const InfiniteScrollPhotos: React.FC<InfiniteScrollPhotosProps> = ({
             }));
 
             setPhotos([...photos, ...newPhotos]);
+            // setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
             setPage(page + 1);
 
             console.log(`Fetched page ${page + 1}`);
@@ -69,17 +70,20 @@ const InfiniteScrollPhotos: React.FC<InfiniteScrollPhotosProps> = ({
     return (
         <>
             {photos.map(
-                ({
-                    id,
-                    url,
-                    title,
-                    author,
-                }: {
-                    id: string;
-                    url: string;
-                    title: string;
-                    author: string;
-                }) => {
+                (
+                    {
+                        id,
+                        url,
+                        title,
+                        author,
+                    }: {
+                        id: string;
+                        url: string;
+                        title: string;
+                        author: string;
+                    },
+                    index,
+                ) => {
                     return (
                         <Link
                             key={id}
@@ -96,11 +100,16 @@ const InfiniteScrollPhotos: React.FC<InfiniteScrollPhotosProps> = ({
                                 height={480}
                                 sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
                             />
-                            <h1 className="">{author}</h1>
+                            <h1 className="font-bold">{index}</h1>
                         </Link>
                     );
                 },
             )}
+
+            {/* Loading spinner */}
+            <div className="mt-10 flex items-center justify-center">
+                <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-t-2 border-indigo-500" />
+            </div>
         </>
     );
 };
