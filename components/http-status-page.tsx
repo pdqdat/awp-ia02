@@ -24,8 +24,8 @@ const HttpStatusPage: React.FC<HttpStatusPageProps> = ({
                     </div>
                 )}
 
-                <Link href="/" className="pt-4 font-bold">
-                    Return Home
+                <Link href="/" className="pt-4 text-lg font-bold">
+                    Back to Home
                 </Link>
             </div>
         </div>

@@ -22,3 +22,8 @@ export const API_URL = "https://api.unsplash.com";
  * This constant is used to paginate the posts in the application.
  */
 export const POSTS_PER_PAGE = 10;
+
+/**
+ * The maximum number of columns to display in the photo gallery.
+ */
+export const MAX_COLUMNS = 4;

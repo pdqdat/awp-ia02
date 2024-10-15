@@ -7,7 +7,7 @@ interface SpinnerProps {
 }
 
 const Spinner: React.FC<SpinnerProps> = ({ size = "small" }) => {
-    const spinnerSize = size === "small" ? 10 : 52;
+    const spinnerSize = size === "small" ? 16 : 52;
 
     return (
         <Loader2

@@ -74,7 +74,7 @@ const PhotoDetailPage: React.FC<PhotoDetailPageProps> = async ({ params }) => {
 
     return (
         <div className="flex flex-col items-center">
-            <div className="mt-8">
+            <div>
                 <h2 className="text-2xl font-bold">{photo.alt_description}</h2>
 
                 <p>
@@ -97,12 +97,6 @@ const PhotoDetailPage: React.FC<PhotoDetailPageProps> = async ({ params }) => {
                         loading="lazy"
                     />
                 )}
-            </div>
-
-            <div className="mt-8">
-                <Link href="/">
-                    <Button>Back to Home</Button>
-                </Link>
             </div>
         </div>
     );
