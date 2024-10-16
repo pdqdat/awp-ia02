@@ -13,6 +13,7 @@ const geistMono = localFont({
     weight: "100 900",
 });
 
+import Header from "@comp/header";
 import Footer from "@comp/footer";
 
 export const metadata: Metadata = {
@@ -30,6 +31,8 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
+                <Header />
+
                 <main className="mx-auto max-w-[1960px] p-4">{children}</main>
 
                 <Footer />

@@ -14,7 +14,7 @@ Clone the repository:
 git clone https://github.com/pdqdat/awp-ia02.git
 ```
 
-Create a `.env.development.local` file in the root directory and add the following line:
+Copy the `.env.development` file and rename it to `.env.development.local`, then add your Unsplash Access Key to the file. You can get an access key by creating an application on the [Unsplash Developer Portal](https://unsplash.com/developers).
 
 ```env
 NEXT_PUBLIC_UNSPLASH_ACCESS_KEY="Your Unsplash Access Key"
@@ -50,17 +50,17 @@ Detailed version of the requirements can be found [here](https://docs.google.com
     <tbody >
         <tr>
             <td>Successfully fetches data from the Unsplash API, handles loading and error states well</td>
-            <td>&cross;</td>
+            <td>&check;</td>
             <td align=center>1</td>
         </tr>
         <tr>
             <td>Displays photos in a responsive, well-styled grid/list with author info</td>
-            <td>&cross;</td>
+            <td>&check;</td>
             <td align=center>2</td>
         </tr>
         <tr>
             <td>Infinite scroll works smoothly, with seamless loading of new photos and clear loading indicators</td>
-            <td>&cross;</td>
+            <td>&check;</td>
             <td align=center>1</td>
         </tr>
         <tr>
@@ -75,7 +75,7 @@ Detailed version of the requirements can be found [here](https://docs.google.com
         </tr>
         <tr>
             <td>App is well-designed, fully responsive across devices, with additional style considerations</td>
-            <td>&cross;</td>
+            <td>&check;</td>
             <td align=center>1</td>
         </tr>
         <tr>
@@ -90,7 +90,7 @@ Detailed version of the requirements can be found [here](https://docs.google.com
         </tr>
         <tr>
             <td colspan=2 align=center><strong>Total</strong></td>
-            <td align=center><strong>3</strong></td>
+            <td align=center><strong>8</strong></td>
         </tr>
     </tbody>
 </table>
