@@ -63,7 +63,7 @@ const PhotoDetailPage: React.FC<PhotoDetailPageProps> = async ({ params }) => {
             <div className="md:col-span-7">
                 {/* Photo box */}
                 <div
-                    className="relative overflow-hidden rounded-lg border-2 border-slate-300"
+                    className="relative overflow-hidden rounded-lg border-0 lg:border-2 border-slate-300"
                     style={{
                         minHeight:
                             photo.height > photo.width
