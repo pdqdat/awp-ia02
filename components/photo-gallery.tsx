@@ -9,10 +9,18 @@ import axios from "axios";
 
 import { Photo } from "@/types";
 
-import { API_URL, MAX_COLUMNS } from "@lib/constants";
+import { API_URL, PHOTOS_PER_PAGE, MAX_COLUMNS } from "@lib/constants";
 
 interface PhotoGalleryProps {
-    initialPhotos: { id: string; url: string; title: string; author: string }[];
+    initialPhotos: {
+        id: string;
+        url: string;
+        alt_description: string;
+        author: string;
+        width: number;
+        height: number;
+        blur_hash: string;
+    }[];
 }
 
 const PhotoGallery: React.FC<PhotoGalleryProps> = ({ initialPhotos }) => {
@@ -24,6 +32,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ initialPhotos }) => {
             const res = await axios.get(`${API_URL}/photos`, {
                 params: {
                     client_id: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
+                    per_page: PHOTOS_PER_PAGE,
                     page: page + 1,
                 },
             });
@@ -31,8 +40,11 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ initialPhotos }) => {
             const newPhotos = res.data.map((photo: Photo) => ({
                 id: photo.id,
                 url: photo.urls.regular,
-                title: photo.alt_description,
+                alt_description: photo.alt_description,
                 author: photo.user.name,
+                width: photo.width,
+                height: photo.height,
+                blur_hash: photo.blur_hash,
             }));
 
             setPhotos([...photos, ...newPhotos]);
@@ -91,12 +103,12 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ initialPhotos }) => {
                                     className="after:content after:shadow-highlight group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
                                 >
                                     <Image
-                                        alt={photo.title}
+                                        alt={photo.alt_description}
                                         className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
                                         src={photo.url}
                                         loading="lazy"
-                                        width={720}
-                                        height={480}
+                                        width={photo.width}
+                                        height={photo.height}
                                         sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
                                     />
 

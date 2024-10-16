@@ -7,19 +7,9 @@ import axios from "axios";
 
 import Button from "@comp/button";
 
-import { API_URL } from "@lib/constants";
+import { Photo } from "@/types";
 
-interface Photo {
-    id: string;
-    urls: {
-        regular: string;
-        full: string;
-    };
-    alt_description: string;
-    user: {
-        name: string;
-    };
-}
+import { API_URL } from "@lib/constants";
 
 interface PhotoDetailPageProps {
     params: {
@@ -30,17 +20,7 @@ interface PhotoDetailPageProps {
 const PhotoDetailPage: React.FC<PhotoDetailPageProps> = async ({ params }) => {
     const { photoID } = params;
 
-    let photo: Photo = {
-        id: "",
-        urls: {
-            regular: "",
-            full: "",
-        },
-        alt_description: "",
-        user: {
-            name: "",
-        },
-    };
+    let photo: Photo;
 
     try {
         const res = await axios.get(`${API_URL}/photos/${photoID}`, {
@@ -73,29 +53,33 @@ const PhotoDetailPage: React.FC<PhotoDetailPageProps> = async ({ params }) => {
     }
 
     return (
-        <div className="flex flex-col items-center">
-            <div>
+        <div className="gap-x-12 lg:grid lg:grid-cols-12 lg:items-start">
+            <div className="md:col-span-7">
+                <div
+                    className={`relative ${photo.width > photo.height ? "aspect-video" : "aspect-[5/3]"}`}
+                >
+                    <Image
+                        src={photo.urls.full}
+                        alt={photo.alt_description}
+                        fill
+                        loading="lazy"
+                        className="object-contain"
+                    />
+                </div>
+            </div>
+
+            <div className="lg:border-border relative mt-2 overflow-hidden border-transparent md:col-span-5 lg:mt-0">
                 <h2 className="text-2xl font-bold">{photo.alt_description}</h2>
 
-                <p>
+                <h3>
                     By{" "}
                     <span className="font-bold text-indigo-500">
                         {photo.user.name}
                     </span>
-                </p>
-            </div>
+                </h3>
 
-            <div className="mt-8">
-                {!photo.urls.full ? (
-                    <div>Loading image...</div>
-                ) : (
-                    <Image
-                        src={photo.urls.full}
-                        alt={photo.alt_description}
-                        width={1280}
-                        height={720}
-                        loading="lazy"
-                    />
+                {photo.description ?? (
+                    <p className="capitalize">{photo.description}</p>
                 )}
             </div>
         </div>

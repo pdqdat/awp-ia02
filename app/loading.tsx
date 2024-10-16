@@ -6,7 +6,7 @@ const LoadingPage = () => {
     return (
         <div className="flex min-h-72 flex-col items-center justify-center gap-3 sm:min-h-96">
             <div className="animate-bounce">
-                <Spinner size="big" />
+                <Spinner />
             </div>
         </div>
     );

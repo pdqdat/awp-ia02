@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { Photo } from "@/types";
 
-import { API_URL } from "@lib/constants";
+import { API_URL, PHOTOS_PER_PAGE } from "@lib/constants";
 
 // Components
 import PhotoGallery from "@/components/photo-gallery";
@@ -12,8 +12,12 @@ const Home = async () => {
     let photos: {
         id: string;
         url: string;
-        title: string;
+        alt_description: string;
+        description?: string;
         author: string;
+        width: number;
+        height: number;
+        blur_hash: string;
     }[] = [];
 
     try {
@@ -21,6 +25,7 @@ const Home = async () => {
         const res = await axios.get(`${API_URL}/photos`, {
             params: {
                 client_id: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
+                per_page: PHOTOS_PER_PAGE,
             },
         });
 
@@ -28,11 +33,27 @@ const Home = async () => {
         photos = res.data.map((photo: Photo) => ({
             id: photo.id,
             url: photo.urls.regular,
-            title: photo.alt_description,
+            alt_description: photo.alt_description,
+            description: photo.description,
             author: photo.user.name,
+            width: photo.width,
+            height: photo.height,
+            blur_hash: photo.blur_hash,
         }));
     } catch (error) {
         console.error("Error fetching photos:", error);
+
+        return (
+            <div className="flex min-h-72 flex-col items-center justify-center sm:min-h-96">
+                <h1 className="text-3xl font-bold text-red-500">
+                    Error loading photos
+                </h1>
+
+                <p className="mt-4 text-lg text-gray-700">
+                    Please come back later.
+                </p>
+            </div>
+        );
     }
 
     return (
