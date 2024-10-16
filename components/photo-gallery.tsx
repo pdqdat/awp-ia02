@@ -102,10 +102,9 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ initialPhotos }) => {
                         {/* Map over the photos in each column and render each photo */}
                         {column.map((photo) => {
                             return (
-                                <div>
+                                <div key={photo.id}>
                                     {/* Photo */}
                                     <Link
-                                        key={photo.id}
                                         href={`/photo/${photo.id}`}
                                         shallow
                                         className="after:content after:shadow-highlight group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
