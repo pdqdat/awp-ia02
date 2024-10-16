@@ -65,7 +65,7 @@ Detailed version of the requirements can be found [here](https://docs.google.com
         </tr>
         <tr>
             <td>Displays full photo, title, author, and description. Provides a good user experience</td>
-            <td>&cross;</td>
+            <td>&check;</td>
             <td align=center>2</td>
         </tr>
         <tr>
@@ -90,7 +90,7 @@ Detailed version of the requirements can be found [here](https://docs.google.com
         </tr>
         <tr>
             <td colspan=2 align=center><strong>Total</strong></td>
-            <td align=center><strong>8</strong></td>
+            <td align=center><strong>10</strong></td>
         </tr>
     </tbody>
 </table>

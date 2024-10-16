@@ -11,23 +11,22 @@ import { Photo } from "@/types";
 
 import { API_URL, PHOTOS_PER_PAGE, MAX_COLUMNS } from "@lib/constants";
 
+import { Loader2 } from "lucide-react";
+
 interface PhotoGalleryProps {
-    initialPhotos: {
-        id: string;
-        url: string;
-        alt_description: string;
-        author: string;
-        width: number;
-        height: number;
-        blur_hash: string;
-    }[];
+    initialPhotos: Photo[];
 }
 
 const PhotoGallery: React.FC<PhotoGalleryProps> = ({ initialPhotos }) => {
     const [photos, setPhotos] = useState(initialPhotos);
     const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(false);
+    const [hasMorePhotos, setHasMorePhotos] = useState(true);
 
     const fetchMorePhotos = async () => {
+        if (!hasMorePhotos) return;
+
+        setLoading(true);
         try {
             const res = await axios.get(`${API_URL}/photos`, {
                 params: {
@@ -37,15 +36,14 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ initialPhotos }) => {
                 },
             });
 
-            const newPhotos = res.data.map((photo: Photo) => ({
-                id: photo.id,
-                url: photo.urls.regular,
-                alt_description: photo.alt_description,
-                author: photo.user.name,
-                width: photo.width,
-                height: photo.height,
-                blur_hash: photo.blur_hash,
-            }));
+            if (res.data.length === 0) {
+                setHasMorePhotos(false);
+                console.log("No more photos to fetch");
+
+                return;
+            }
+
+            const newPhotos = res.data;
 
             setPhotos([...photos, ...newPhotos]);
             setPage(page + 1);
@@ -53,6 +51,8 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ initialPhotos }) => {
             console.log(`Fetched page ${page + 1}`);
         } catch (error) {
             console.error("Error fetching photos:", error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -89,40 +89,68 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ initialPhotos }) => {
 
     return (
         <>
-            {/* Map over the columns (4 in total) and render each column */}
-            {[getColumns(0), getColumns(1), getColumns(2), getColumns(3)].map(
-                (column, idx) => (
+            {/* Photo grid */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-4">
+                {/* Map over the columns (4 in total) and render each column */}
+                {[
+                    getColumns(0),
+                    getColumns(1),
+                    getColumns(2),
+                    getColumns(3),
+                ].map((column, idx) => (
                     <div key={idx} className="flex flex-col gap-5">
                         {/* Map over the photos in each column and render each photo */}
                         {column.map((photo) => {
                             return (
-                                <Link
-                                    key={photo.id}
-                                    href={`/photo/${photo.id}`}
-                                    shallow
-                                    className="after:content after:shadow-highlight group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
-                                >
-                                    <Image
-                                        alt={photo.alt_description}
-                                        className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                                        src={photo.url}
-                                        loading="lazy"
-                                        width={photo.width}
-                                        height={photo.height}
-                                        sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
-                                    />
+                                <div key={photo.id}>
+                                    {/* Photo */}
+                                    <Link
+                                        href={`/photo/${photo.id}`}
+                                        shallow
+                                        className="after:content after:shadow-highlight group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
+                                    >
+                                        <Image
+                                            alt={photo.alt_description}
+                                            className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                                            src={photo.urls.regular}
+                                            loading="lazy"
+                                            width={photo.width}
+                                            height={photo.height}
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
+                                        />
+                                    </Link>
 
-                                    <h1 className="">
+                                    {/* Author */}
+                                    <h1 className="text-center sm:text-left">
                                         By{" "}
-                                        <span className="text-indigo-500">
-                                            {photo.author}
+                                        <span className="font-semibold text-indigo-500">
+                                            <Link
+                                                href={photo.user.links.html}
+                                                target="_blank"
+                                            >
+                                                {photo.user.name}
+                                            </Link>
                                         </span>
                                     </h1>
-                                </Link>
+                                </div>
                             );
                         })}
                     </div>
-                ),
+                ))}
+            </div>
+
+            {/* Loading spinner */}
+            {loading && (
+                <div className="mt-10 flex items-center justify-center">
+                    <Loader2 className="h-16 w-16 animate-spin text-indigo-500" />
+                </div>
+            )}
+
+            {/* No more photos message */}
+            {!hasMorePhotos && (
+                <h1 className="text-center font-bold">
+                    No more photos to load
+                </h1>
             )}
         </>
     );
