@@ -13,6 +13,7 @@ const nextConfig = {
                 hostname: "placehold.co",
             },
         ],
+        unoptimized: true,
     },
 };
 
