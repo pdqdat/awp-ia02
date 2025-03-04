@@ -14,7 +14,7 @@ const Header = () => {
             </div>
 
             <Link
-                href="https://github.com/pdqdat/awp-ia02"
+                href="https://github.com/pdqdat/awad-ia02"
                 target="_blank"
                 className="font-medium sm:font-semibold"
             >

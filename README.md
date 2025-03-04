@@ -1,17 +1,26 @@
-# HCMUS Advanced Web App Programming
+# IA02 - Unsplash photo gallery
 
-## IA02 - Unsplash photo gallery
+This project is a photo gallery app that fetches and displays high-quality images from the Unsplash API. It features infinite scroll, detailed photo views, and intuitive URLs, aiming to provide a seamless user experience with smooth loading and well-organized code.
 
-20120268 - Phan Duong Quoc Dat
+Built by **Phan Duong Quoc Dat - 20120268** for [IA02](/md/ia02.md) assessment of the **Advanced Web App Development** course at **HCMUS**.
 
-## How to run the project
+FIT@HCMUS - October 16th, 2024.
+
+## Tech stack
+
+-   React
+-   Next.js
+-   Tailwind CSS
+-   Unsplash API
+
+## How to run
 
 Make sure you have [Node.js](https://nodejs.org/en/download/) installed on your machine.
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/pdqdat/awp-ia02.git
+git clone https://github.com/pdqdat/awad-ia02.git
 ```
 
 Copy the `.env.development` file and rename it to `.env.development.local`, then add your Unsplash Access Key to the file. You can get an access key by creating an application on the [Unsplash Developer Portal](https://unsplash.com/developers).
@@ -38,7 +47,7 @@ Or vist the deployed version at [https://ia2photogallery.vercel.app](https://ia2
 
 ## Self evaluation
 
-Detailed version of the requirements can be found [here](https://docs.google.com/document/d/1jxr3Eg1oELl_M7IfWUfXFyGBTM1gkZlIQEY4z2IhOjA/edit).
+Detailed version of the requirements can be found [here](/md/ia02.md).
 
 <table>
     <thead>
